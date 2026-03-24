@@ -83,9 +83,12 @@ export function ProductManager() {
     if (!file) return;
 
     const text = await file.text();
-    // Extraímos qualquer linha que pareça uma URL válida de acordo com as especificações (Shopee, Amazon, ML)
-    const lines = text.split(/\r?\n/).map(l => l.trim().replace(/['"]/g, '')).filter(l => 
-      l.startsWith('http') && (l.includes("shopee") || l.includes("shope.ee") || l.includes("amazon") || l.includes("amzn") || l.includes("mercadolivre") || l.includes("meli"))
+    // Extraímos qualquer link que contenha http nas colunas do CSV (resolve o caso do link não estar na primeira coluna)
+    const lines = text.split(/\r?\n/).map(l => {
+      const match = l.match(/(https?:\/\/[^\s,;"']+)/);
+      return match ? match[1] : "";
+    }).filter(url => 
+      url !== "" && (url.includes("shopee") || url.includes("shope.ee") || url.includes("amazon") || url.includes("amzn") || url.includes("mercadolivre") || url.includes("meli") || url.includes("ml"))
     );
 
     if (lines.length === 0) {
