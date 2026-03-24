@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { CheckCircle2, Instagram, MessageCircle, Music2, Save } from "lucide-react";
+import { CheckCircle2, Instagram, Music2, Save } from "lucide-react";
 import { useStoreSettings } from "./store-settings-provider";
 
 export function StoreSettingsManager() {
@@ -81,22 +81,6 @@ export function StoreSettingsManager() {
             />
           </label>
 
-          <label className="grid gap-2">
-            <span className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[var(--brand-text)]/60 ml-1">
-              <MessageCircle size={14} className="text-emerald-500" />
-              WhatsApp Business
-            </span>
-            <input
-              type="url"
-              value={form.whatsappUrl}
-              onChange={(event) =>
-                setForm((current) => ({ ...current, whatsappUrl: event.target.value }))
-              }
-              disabled={isLoading}
-              placeholder="https://wa.me/5500000000000"
-              className="h-12 rounded-2xl border border-white/5 bg-white/5 px-4 text-sm text-[var(--brand-text)] outline-none transition focus:border-[var(--brand-primary)]/50 focus:bg-white/[0.08]"
-            />
-          </label>
         </div>
 
         <button
