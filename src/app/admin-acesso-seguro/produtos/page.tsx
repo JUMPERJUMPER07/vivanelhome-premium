@@ -8,7 +8,7 @@ import { ADMIN_PRODUCTS_PATH } from "@/lib/admin-routes";
 
 export const metadata: Metadata = {
   title: "Painel de produtos",
-  description: "Cadastre produtos com link da Shopee para a vitrine da VivanelHOME.",
+  description: "Cadastre produtos com link da Shopee, Amazon e Mercado Livre para a vitrine da VivanelHOME.",
 };
 
 export default function ProductPanelPage() {
@@ -28,10 +28,10 @@ export default function ProductPanelPage() {
               Cadastro manual
             </p>
             <h1 className="mt-3 text-3xl font-black text-[var(--brand-text)] tracking-tight md:text-5xl">
-              Adicione produtos e links da Shopee
+              Adicione produtos e links da Shopee, Amazon e Mercado Livre
             </h1>
             <p className="mt-4 max-w-3xl text-sm leading-relaxed text-[var(--brand-muted)]">
-              Preencha o formulario abaixo com o produto e o link do anuncio. Quando o cliente clicar no botao da oferta, ele sera direcionado para a Shopee usando a URL cadastrada.
+              Preencha o formulário abaixo com o produto e o link do anúncio. Quando o cliente clicar no botão da oferta, ele será direcionado para a loja correspondente usando a URL cadastrada.
             </p>
           </div>
           <AdminLogoutButton />
