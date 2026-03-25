@@ -141,9 +141,11 @@ export function ProductManager() {
              finalPrice = Number(clean) || 0;
          }
 
+         const finalTitle = data.title || "Produto Importado (Sem Título)";
+
          const payload = {
-           name: data.title,
-           shortDescription: data.title.substring(0, 120),
+           name: finalTitle,
+           shortDescription: finalTitle.substring(0, 120),
            description: data.description ? data.description.substring(0, 3000) : "Sem descrição disponível.",
            oldPrice: 0,
            price: finalPrice > 0 ? finalPrice : 10,
