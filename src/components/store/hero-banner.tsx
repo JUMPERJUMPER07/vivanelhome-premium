@@ -14,7 +14,12 @@ const stats = [
 
 export function HeroBanner() {
   const { allProducts } = useProductStore();
-  const featured = allProducts.filter(p => p.isBestSeller || p.isFlashDeal).slice(0, 6);
+  const featured = (() => {
+    const explicitlyFeatured = allProducts.filter(p => p.isBestSeller || p.isFlashDeal);
+    if (explicitlyFeatured.length > 0) return explicitlyFeatured.slice(0, 6);
+    // Se não houver nada em destaque, pega os últimos 6 cadastrados para não ficar vazio
+    return allProducts.slice(0, 6);
+  })();
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
