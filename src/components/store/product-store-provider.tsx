@@ -21,9 +21,15 @@ type ProductStoreContextValue = {
 
 const ProductStoreContext = createContext<ProductStoreContextValue | null>(null);
 
-export function ProductStoreProvider({ children }: { children: React.ReactNode }) {
-  const [customProducts, setCustomProducts] = useState<Product[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+export function ProductStoreProvider({ 
+  children,
+  initialProducts = []
+}: { 
+  children: React.ReactNode;
+  initialProducts?: Product[];
+}) {
+  const [customProducts, setCustomProducts] = useState<Product[]>(initialProducts);
+  const [isLoading, setIsLoading] = useState(initialProducts.length === 0);
 
   useEffect(() => {
     async function loadProducts() {

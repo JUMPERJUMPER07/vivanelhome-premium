@@ -117,12 +117,20 @@ select option {
   box-shadow: 0 20px 60px -15px rgba(139, 92, 246, 0.25), 0 0 0 1px rgba(139, 92, 246, 0.15);
 }
 
-/* Glassmorphism utility */
+/* Glassmorphism utility - Optimized for mobile */
 .glass {
   background: rgba(15, 23, 42, 0.55);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+@media (max-width: 640px) {
+  .glass {
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    background: rgba(15, 23, 42, 0.75); /* Darker fallback if blur is lower */
+  }
 }
 
 /* no-scrollbar */
