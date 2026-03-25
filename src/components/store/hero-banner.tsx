@@ -89,11 +89,15 @@ export function HeroBanner() {
                          className="rounded-[2.5rem] shadow-2xl grayscale-[0.2] group-hover/item:grayscale-0 transition-all duration-700" 
                        />
                        
-                       {/* Overlay Info directly in the visual box */}
-                       <div className="absolute bottom-10 left-10 right-10 rounded-2xl border border-white/10 bg-black/60 p-6 backdrop-blur-md shadow-2xl translate-y-4 opacity-0 transition-all duration-500 group-hover/item:translate-y-0 group-hover/item:opacity-100">
-                          <h3 className="text-sm font-black text-white uppercase tracking-wider text-center">
+                       {/* Overlay Info - Always visible */}
+                       <div className="absolute bottom-6 left-6 right-6 rounded-2xl border border-white/10 bg-black/50 p-5 backdrop-blur-md shadow-2xl transition-all duration-500">
+                          <h3 className="text-sm font-black text-white uppercase tracking-wider text-center line-clamp-1">
                             {featured[currentIndex].name}
                           </h3>
+                          <div className="mt-2 flex items-center justify-center gap-2">
+                             <span className="text-[10px] font-bold text-white/50 uppercase tracking-widest">Oferta:</span>
+                             <span className="text-sm font-black text-[var(--brand-primary)]">R$ {featured[currentIndex].price.toFixed(2)}</span>
+                          </div>
                        </div>
                     </div>
 
