@@ -103,13 +103,14 @@ export function ProductCard({ product }: ProductCardProps) {
             }
 
             return (
-              <Link
+              <a
                 href={product.affiliateUrl}
                 target="_blank"
+                rel="noopener noreferrer"
                 className={`flex items-center justify-center gap-1.5 rounded-xl py-3 text-xs font-black shadow-lg transition hover:brightness-110 active:scale-95 flex-1 ${finalClasses}`}
               >
                 Ver Produto ↗
-              </Link>
+              </a>
             );
           })()}
         </div>
