@@ -20,7 +20,7 @@ export default function PrivacyPolicyPage() {
             <p>
               A VivanelHOME não coleta informações financeiras diretamente. Como somos uma vitrine de afiliados, 
               o processamento de pagamentos e a coleta de dados de faturamento ocorrem exclusivamente nas plataformas 
-              parceiras (como Amazon, Shopee, Mercado Livre, etc.). Podemos coletar dados de navegação anonimizados 
+              parceiras (como a Shopee). Podemos coletar dados de navegação anonimizados 
               via cookies para melhorar sua experiência em nosso site.
             </p>
           </section>

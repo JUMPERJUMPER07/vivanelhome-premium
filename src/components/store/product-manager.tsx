@@ -66,8 +66,6 @@ const categoryOptions = [
 
 const iconOptions = [
   { label: "Shopee", value: "shopee" },
-  { label: "Amazon", value: "amazon" },
-  { label: "Mercado Livre", value: "mercado-livre" },
   { label: "Roupas (Camiseta)", value: "shirt" },
   { label: "Acessórios (Relógio)", value: "watch" },
   { label: "Cama/Banho (Cama)", value: "bed" },
@@ -101,11 +99,11 @@ export function ProductManager() {
       const match = l.match(/(https?:\/\/[^\s,;"']+)/);
       return match ? match[1] : "";
     }).filter(url => 
-      url !== "" && (url.includes("shopee") || url.includes("shope.ee") || url.includes("amazon") || url.includes("amzn") || url.includes("mercadolivre") || url.includes("meli") || url.includes("ml"))
+      url !== "" && (url.includes("shopee") || url.includes("shope.ee"))
     );
 
     if (lines.length === 0) {
-       setErrorMessage("O arquivo não contém links válidos da Shopee, Amazon ou ML.");
+       setErrorMessage("O arquivo não contém links válidos da Shopee.");
        return;
     }
 

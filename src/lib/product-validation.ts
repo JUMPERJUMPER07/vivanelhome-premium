@@ -44,15 +44,10 @@ const productBaseSchema = z.object({
         const v = value.toLowerCase();
         return (
           v.includes("shopee") ||
-          v.includes("shope.ee") ||
-          v.includes("amazon.com.br") ||
-          v.includes("amzn.to") ||
-          v.includes("mercadolivre") ||
-          v.includes("meli.li") ||
-          v.includes("meli.la")
+          v.includes("shope.ee")
         );
       },
-      "Use um link válido da Shopee, Amazon ou Mercado Livre."
+      "Use um link válido da Shopee."
     ),
   cta: z.string().trim().min(1).default("Ver Produto"),
   badge: z.string().trim().min(0).default("Novo"),

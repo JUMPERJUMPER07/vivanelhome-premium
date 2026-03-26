@@ -89,19 +89,9 @@ export function ProductCard({ product }: ProductCardProps) {
           )}
 
           {(() => {
-            const store = String(product.iconKey || "").toLowerCase();
+            // Default Shopee style
+            let finalClasses = "bg-[#ff4d2d] text-white shadow-xl shadow-orange-500/20 ring-1 ring-orange-400/20";
             
-            // Usamos um switch ou mapeamento direto para garantir que o Tailwind identifique as classes no build
-            let finalClasses = "bg-violet-600 text-white shadow-purple-500/20";
-            
-            if (store === "shopee") {
-              finalClasses = "bg-[#ff4d2d] text-white shadow-orange-500/20";
-            } else if (store === "amazon") {
-              finalClasses = "bg-[#232f3e] text-white shadow-slate-900/20";
-            } else if (store === "mercado-livre") {
-              finalClasses = "bg-[#fff159] text-black shadow-yellow-500/20";
-            }
-
             return (
               <a
                 href={product.affiliateUrl}
@@ -109,7 +99,7 @@ export function ProductCard({ product }: ProductCardProps) {
                 rel="noopener noreferrer"
                 className={`flex items-center justify-center gap-1.5 rounded-xl py-3 text-xs font-black shadow-lg transition hover:brightness-110 active:scale-95 flex-1 ${finalClasses}`}
               >
-                Ver Produto ↗
+                Ver na Shopee ↗
               </a>
             );
           })()}
