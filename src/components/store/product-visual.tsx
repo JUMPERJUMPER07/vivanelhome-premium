@@ -15,10 +15,18 @@ import {
   ShoppingBag,
   Tv,
   UtensilsCrossed,
+  Shirt,
+  Watch,
+  Bed,
 } from "lucide-react";
 import type { Product } from "@/data/products";
 
 const categoryThemes: Record<string, { from: string; to: string }> = {
+  "roupa-feminina": { from: "#fdf2f8", to: "#ec4899" },
+  "roupa-masculina": { from: "#eff6ff", to: "#3b82f6" },
+  "cama-e-banho": { from: "#f0fdf4", to: "#22c55e" },
+  acessorios: { from: "#fffbeb", to: "#f59e0b" },
+  televisores: { from: "#1e1b4b", to: "#6366f1" },
   "cozinha-pratica": { from: "#111111", to: "#7c3aed" },
   "casa-organizada": { from: "#f5f3ff", to: "#8b5cf6" },
   "banheiro-e-limpeza": { from: "#1f1438", to: "#a855f7" },
@@ -32,15 +40,15 @@ const categoryThemes: Record<string, { from: string; to: string }> = {
   saude: { from: "#450a0a", to: "#ef4444" },
   beleza: { from: "#4c1d95", to: "#d946ef" },
   informatica: { from: "#020617", to: "#334155" },
-  shopee: { from: "#ee4d2d", to: "#f53d2d" }, // Added shopee theme
-  amazon: { from: "#232f3e", to: "#37475a" }, // Added amazon theme
-  "mercado-livre": { from: "#fff159", to: "#ffe600" }, // Added mercado-livre theme
+  shopee: { from: "#ee4d2d", to: "#f53d2d" },
+  amazon: { from: "#232f3e", to: "#37475a" },
+  "mercado-livre": { from: "#fff159", to: "#ffe600" },
   smartphone: { from: "#09090b", to: "#27272a" },
   infantil: { from: "#fdf2f8", to: "#f472b6" },
   pet: { from: "#fff7ed", to: "#f97316" },
 };
 
-const icons: Record<Product["iconKey"], any> = {
+const icons: Record<string, any> = {
   "chef-hat": ChefHat,
   droplets: Droplets,
   package: Package,
@@ -60,6 +68,9 @@ const icons: Record<Product["iconKey"], any> = {
   shopee: ShoppingBag,
   amazon: ShoppingBag,
   "mercado-livre": ShoppingBag,
+  shirt: Shirt,
+  watch: Watch,
+  bed: Bed,
 };
 
 type ProductVisualProps = {

@@ -44,6 +44,11 @@ const initialForm = {
 };
 
 const categoryOptions = [
+  { label: "Roupa Feminina", value: "roupa-feminina" },
+  { label: "Roupa Masculina", value: "roupa-masculina" },
+  { label: "Roupa de Cama e Banho", value: "cama-e-banho" },
+  { label: "Acessórios", value: "acessorios" },
+  { label: "Televisores", value: "televisores" },
   { label: "Cozinha Prática", value: "cozinha-pratica" },
   { label: "Casa Organizada", value: "casa-organizada" },
   { label: "Banheiro e Limpeza", value: "banheiro-e-limpeza" },
@@ -59,10 +64,18 @@ const categoryOptions = [
   { label: "Informática", value: "informatica" },
 ];
 
-const storeOptions = [
+const iconOptions = [
   { label: "Shopee", value: "shopee" },
   { label: "Amazon", value: "amazon" },
   { label: "Mercado Livre", value: "mercado-livre" },
+  { label: "Roupas (Camiseta)", value: "shirt" },
+  { label: "Acessórios (Relógio)", value: "watch" },
+  { label: "Cama/Banho (Cama)", value: "bed" },
+  { label: "TV / Monitor", value: "tv" },
+  { label: "Smartphone", value: "smartphone" },
+  { label: "Cozinha (Chapéu)", value: "chef-hat" },
+  { label: "Limpeza (Gota)", value: "droplets" },
+  { label: "Geral (Pacote)", value: "package" },
 ];
 
 
@@ -575,13 +588,13 @@ export function ProductManager() {
             </label>
 
             <label className="grid gap-2">
-              <span className="text-xs font-bold uppercase tracking-widest text-[var(--brand-text)]/60 ml-1">Loja / Marketplace</span>
+              <span className="text-xs font-bold uppercase tracking-widest text-[var(--brand-text)]/60 ml-1">Estilo do Card / Ícone</span>
               <select
                 value={form.iconKey}
                 onChange={(event) => updateField("iconKey", event.target.value)}
                 className="h-12 rounded-2xl border border-white/5 bg-white/5 px-4 text-sm text-[var(--brand-text)] outline-none transition focus:border-[var(--brand-primary)]/50 focus:bg-white/[0.08]"
               >
-                {storeOptions.map((option) => (
+                {iconOptions.map((option) => (
                   <option key={option.value} value={option.value} className="bg-[#0f172a]">
                     {option.label}
                   </option>

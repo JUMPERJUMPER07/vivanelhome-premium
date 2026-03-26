@@ -23,6 +23,11 @@ export const storeConfig = {
     "Praticidade para casa, treino e carro",
   ],
   categories: [
+    { name: "Roupa Feminina", slug: "roupa-feminina" },
+    { name: "Roupa Masculina", slug: "roupa-masculina" },
+    { name: "Roupa de Cama e Banho", slug: "cama-e-banho" },
+    { name: "Acessórios", slug: "acessorios" },
+    { name: "Televisores", slug: "televisores" },
     { name: "Shopee", slug: "shopee" },
     { name: "Amazon", slug: "amazon" },
     { name: "Mercado Livre", slug: "mercado-livre" },
