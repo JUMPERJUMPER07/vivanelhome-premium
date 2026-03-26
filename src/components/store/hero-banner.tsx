@@ -101,11 +101,6 @@ export function HeroBanner() {
                        </div>
                     </div>
 
-                    {/* Badge lateral flutuante */}
-                    <div className="absolute -right-6 top-1/2 -translate-y-1/2 z-30 flex h-24 w-24 flex-col items-center justify-center rounded-full border border-white/10 bg-[var(--brand-primary)] text-white shadow-2xl shadow-purple-500/40 rotate-12 group-hover/item:rotate-0 transition-transform duration-500">
-                       <p className="text-[10px] font-black uppercase tracking-tighter">Por apenas</p>
-                       <p className="text-lg font-black tracking-tighter">R$ {featured[currentIndex].price.toFixed(0)}</p>
-                    </div>
                   </Link>
 
                   {/* Indicators inside the banner flow */}
