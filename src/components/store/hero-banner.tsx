@@ -35,82 +35,76 @@ export function HeroBanner() {
       <div className="group relative overflow-hidden rounded-[4rem] border border-white/8 bg-[#080f1f] text-white shadow-[0_50px_100px_rgba(0,0,0,0.5)] transition-all duration-700">
         {/* Unified Background Effect */}
         <div
-          className="animate-pulse pointer-events-none absolute -right-40 -top-40 h-[1000px] w-[1000px] rounded-full opacity-30"
+          className="animate-pulse pointer-events-none absolute -right-40 -top-40 h-[1200px] w-[1200px] rounded-full opacity-10"
           style={{
-            background: "radial-gradient(circle, rgba(139,92,246,0.5) 0%, rgba(6,182,212,0.2) 60%, transparent 80%)",
+            background: "radial-gradient(circle, rgba(139,92,246,0.3) 0%, rgba(6,182,212,0.1) 60%, transparent 80%)",
           }}
         />
 
-        <div className="relative z-10 grid items-center gap-16 lg:grid-cols-2 p-10 md:p-20 xl:p-28">
+        <div className="relative z-10 grid items-center gap-16 lg:grid-cols-[38%_62%] p-10 md:p-20">
           {/* Left Side: Content */}
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-6 py-3 text-xs font-black tracking-[0.3em] uppercase backdrop-blur-xl">
-              <Sparkles size={16} className="text-[#a78bfa]" />
+          <div className="flex flex-col items-start gap-8">
+            <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-6 py-2.5 text-[10px] font-black tracking-[0.3em] uppercase backdrop-blur-xl">
+              <Sparkles size={14} className="text-[#a78bfa]" />
               <span className="bg-gradient-to-r from-white to-white/60 bg-clip-text text-transparent">
-                Seleção Ultra Premium 2026
+                Curadoria Premium 2026
               </span>
             </div>
 
-            <h1 className="mt-10 text-7xl font-black leading-[0.95] tracking-tighter md:text-9xl xl:text-[10rem]">
+            <h1 className="text-6xl font-black leading-[0.9] tracking-tighter md:text-8xl">
               Sua casa <br />
-              <span className="gradient-text">evoluída</span>
-              <span className="text-white/30 block text-5xl md:text-7xl xl:text-8xl mt-6 tracking-tighter">&amp; sofisticada</span>
+              <span className="gradient-text">inteligente</span>
+              <span className="text-white/20 block text-4xl md:text-6xl mt-4 tracking-tighter">&amp; sofisticada</span>
             </h1>
 
-            <p className="mt-10 max-w-xl text-xl leading-relaxed text-white/40 font-medium">
-              A curadoria definitiva de achadinhos inteligentes para transformar o seu dia a dia com estilo e praticidade.
+            <p className="max-w-md text-lg leading-relaxed text-white/40 font-medium">
+              Achadinhos selecionados para transformar sua rotina com tecnologia e estilo.
             </p>
 
-            <div className="mt-20 flex flex-wrap items-center gap-14 text-white/10 uppercase tracking-[0.4em] text-xs font-black">
+            <div className="mt-8 flex items-center gap-8 text-white/10 uppercase tracking-[0.4em] text-[9px] font-black">
                <span>Estilo Superior</span>
-               <span className="h-2 w-2 rounded-full bg-white/10" />
-               <span>Curadoria Exclusiva</span>
-               <span className="h-2 w-2 rounded-full bg-white/10" />
-               <span>Achadinhos VIP</span>
+               <span className="h-1.5 w-1.5 rounded-full bg-white/10" />
+               <span>VIP Selection</span>
             </div>
           </div>
 
           {/* Right Side: Integrated Carousel */}
-          <div className="relative flex items-center justify-center">
-             <div className="absolute -inset-40 bg-[var(--brand-primary)]/10 blur-[120px] rounded-full" />
+          <div className="relative w-full">
+             <div className="absolute -inset-40 bg-[var(--brand-primary)]/5 blur-[120px] rounded-full" />
              
              {featured.length > 0 ? (
-               <div className="relative w-full max-w-[620px] perspective-2000">
-                  {/* Floating Elements Around Carousel */}
-                  <div className="absolute -top-10 -right-10 animate-bounce duration-[3s] text-purple-500/30">
-                     <Zap size={40} strokeWidth={1} />
-                  </div>
-
+               <div className="relative w-full perspective-2000">
                   <Link href={`/produto/${featured[currentIndex].slug}`} className="block relative z-20 group/item">
-                    <div className="overflow-hidden rounded-[3rem] border border-white/10 bg-white/5 p-4 backdrop-blur-xl transition-all duration-500 group-hover/item:border-white/20 group-hover/item:scale-[1.02] shadow-2xl">
+                    <div className="overflow-hidden rounded-[3.5rem] border border-white/10 bg-white/5 p-4 backdrop-blur-xl transition-all duration-700 group-hover/item:border-white/20 group-hover/item:shadow-[0_40px_100px_rgba(139,92,246,0.2)] shadow-2xl">
                        <ProductVisual 
                          product={featured[currentIndex]} 
-                         forceRatio="4/5" 
-                         className="rounded-[2.5rem] shadow-2xl grayscale-[0.2] group-hover/item:grayscale-0 transition-all duration-700" 
+                         forceRatio="16/9" 
+                         className="rounded-[2.5rem] shadow-2xl transition-all duration-700 object-cover" 
                        />
                        
-                       {/* Overlay Info - Always visible */}
-                       <div className="absolute bottom-6 left-6 right-6 rounded-2xl border border-white/10 bg-black/50 p-5 backdrop-blur-md shadow-2xl transition-all duration-500">
-                          <h3 className="text-sm font-black text-white uppercase tracking-wider text-center line-clamp-1">
+                       {/* Overlay Info - Clean & Floating */}
+                       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 w-[85%] rounded-[2rem] border border-white/10 bg-black/60 p-6 backdrop-blur-xl shadow-2xl transition-all duration-500 group-hover/item:bottom-12">
+                          <h3 className="text-base font-black text-white uppercase tracking-wider text-center line-clamp-1">
                             {featured[currentIndex].name}
                           </h3>
-                          <div className="mt-2 flex items-center justify-center gap-2">
-                             <span className="text-[10px] font-bold text-white/50 uppercase tracking-widest">Oferta:</span>
-                             <span className="text-sm font-black text-[var(--brand-primary)]">R$ {featured[currentIndex].price.toFixed(2)}</span>
+                          <div className="mt-2 flex items-center justify-center gap-4">
+                             <div className="h-px flex-1 bg-white/10" />
+                             <span className="text-xl font-black text-[var(--brand-primary)]">R$ {featured[currentIndex].price.toFixed(2)}</span>
+                             <div className="h-px flex-1 bg-white/10" />
                           </div>
                        </div>
                     </div>
 
                   </Link>
 
-                  {/* Indicators inside the banner flow */}
-                  <div className="mt-10 flex justify-center items-center gap-4">
+                  {/* Indicators */}
+                  <div className="mt-12 flex justify-center items-center gap-3">
                     {featured.map((_, i) => (
                       <button
                         key={i}
                         onClick={() => setCurrentIndex(i)}
                         className={`h-1.5 rounded-full transition-all duration-500 ${
-                          i === currentIndex ? "w-10 bg-[var(--brand-primary)]" : "w-2 bg-white/10 hover:bg-white/20"
+                          i === currentIndex ? "w-12 bg-[var(--brand-primary)]" : "w-2 bg-white/10 hover:bg-white/20"
                         }`}
                         aria-label={`Ver item ${i + 1}`}
                       />
