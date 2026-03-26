@@ -15,13 +15,13 @@ export function Logo({ compact = false }: LogoProps) {
       )}
       aria-label="VivanelHOME"
     >
-      <div className="flex items-center">
+      <div className="flex items-center justify-center py-1">
         <img 
           src="/logo.png" 
           alt="VivanelHOME" 
           className={clsx(
-            "object-contain w-auto h-auto min-w-[120px]",
-            compact ? "max-h-5" : "max-h-8 md:max-h-10"
+            "object-contain w-auto transition-all duration-300",
+            compact ? "max-h-10 md:max-h-12 shadow-md" : "max-h-24 md:max-h-32 lg:max-h-40 drop-shadow-[0_0_15px_rgba(139,92,246,0.3)]"
           )}
         />
       </div>
