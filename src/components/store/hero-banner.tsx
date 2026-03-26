@@ -35,47 +35,47 @@ export function HeroBanner() {
       <div className="group relative overflow-hidden rounded-[4rem] border border-white/8 bg-[#080f1f] text-white shadow-[0_50px_100px_rgba(0,0,0,0.5)] transition-all duration-700">
         {/* Unified Background Effect */}
         <div
-          className="animate-blob pointer-events-none absolute -right-20 -top-20 h-[800px] w-[800px] rounded-full opacity-20"
+          className="animate-pulse pointer-events-none absolute -right-40 -top-40 h-[1000px] w-[1000px] rounded-full opacity-30"
           style={{
-            background: "radial-gradient(circle, rgba(139,92,246,0.6) 0%, rgba(6,182,212,0.3) 50%, transparent 70%)",
+            background: "radial-gradient(circle, rgba(139,92,246,0.5) 0%, rgba(6,182,212,0.2) 60%, transparent 80%)",
           }}
         />
 
-        <div className="relative z-10 grid items-center gap-12 lg:grid-cols-[1.2fr_0.8fr] p-8 md:p-16">
+        <div className="relative z-10 grid items-center gap-16 lg:grid-cols-2 p-10 md:p-20 xl:p-28">
           {/* Left Side: Content */}
-          <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-2.5 text-[10px] font-black tracking-[0.2em] uppercase backdrop-blur-md">
-              <Sparkles size={14} className="text-[#a78bfa]" />
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-6 py-3 text-xs font-black tracking-[0.3em] uppercase backdrop-blur-xl">
+              <Sparkles size={16} className="text-[#a78bfa]" />
               <span className="bg-gradient-to-r from-white to-white/60 bg-clip-text text-transparent">
-                Seleção Premium VivanelHome
+                Seleção Ultra Premium 2026
               </span>
             </div>
 
-            <h1 className="mt-8 text-6xl font-black leading-[1.05] tracking-tight md:text-8xl">
-              Sua casa com <br />
-              <span className="gradient-text">tecnologia</span>
-              <span className="text-white/40 block text-4xl md:text-6xl mt-4 tracking-tighter">&amp; estilo</span>
+            <h1 className="mt-10 text-7xl font-black leading-[0.95] tracking-tighter md:text-9xl xl:text-[10rem]">
+              Sua casa <br />
+              <span className="gradient-text">evoluída</span>
+              <span className="text-white/30 block text-5xl md:text-7xl xl:text-8xl mt-6 tracking-tighter">&amp; sofisticada</span>
             </h1>
 
-            <p className="mt-8 max-w-lg text-lg leading-relaxed text-white/50 font-medium">
-              Descubra os melhores achadinhos que transformam rotinas. Praticidade 
-              inteligente curada todos os dias.
+            <p className="mt-10 max-w-xl text-xl leading-relaxed text-white/40 font-medium">
+              A curadoria definitiva de achadinhos inteligentes para transformar o seu dia a dia com estilo e praticidade.
             </p>
 
-            <div className="mt-16 flex flex-wrap items-center gap-12 text-white/10 uppercase tracking-[0.3em] text-[10px] font-black">
-               {/* Stats removed as requested */}
+            <div className="mt-20 flex flex-wrap items-center gap-14 text-white/10 uppercase tracking-[0.4em] text-xs font-black">
+               <span>Estilo Superior</span>
+               <span className="h-2 w-2 rounded-full bg-white/10" />
                <span>Curadoria Exclusiva</span>
-               <span className="h-1 w-1 rounded-full bg-white/20" />
-               <span>Qualidade Premium</span>
+               <span className="h-2 w-2 rounded-full bg-white/10" />
+               <span>Achadinhos VIP</span>
             </div>
           </div>
 
           {/* Right Side: Integrated Carousel */}
           <div className="relative flex items-center justify-center">
-             <div className="absolute -inset-20 bg-[var(--brand-primary)]/5 blur-[100px] rounded-full" />
+             <div className="absolute -inset-40 bg-[var(--brand-primary)]/10 blur-[120px] rounded-full" />
              
              {featured.length > 0 ? (
-               <div className="relative w-full max-w-[440px] perspective-1000">
+               <div className="relative w-full max-w-[620px] perspective-2000">
                   {/* Floating Elements Around Carousel */}
                   <div className="absolute -top-10 -right-10 animate-bounce duration-[3s] text-purple-500/30">
                      <Zap size={40} strokeWidth={1} />

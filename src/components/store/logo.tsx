@@ -21,7 +21,7 @@ export function Logo({ compact = false }: LogoProps) {
           alt="VivanelHOME" 
           className={clsx(
             "object-contain w-auto transition-all duration-300",
-            compact ? "max-h-10 md:max-h-12 shadow-md" : "max-h-24 md:max-h-32 lg:max-h-40 drop-shadow-[0_0_15px_rgba(139,92,246,0.3)]"
+            compact ? "max-h-12 md:max-h-16 shadow-xl" : "max-h-28 md:max-h-48 lg:max-h-60 xl:max-h-72 drop-shadow-[0_0_25px_rgba(139,92,246,0.4)]"
           )}
         />
       </div>
