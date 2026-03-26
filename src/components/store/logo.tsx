@@ -15,15 +15,15 @@ export function Logo({ compact = false }: LogoProps) {
       )}
       aria-label="VivanelHOME"
     >
-      <div className="flex items-center gap-0">
-        <span className="font-bold tracking-tighter text-[var(--brand-text)]">
-          Vivanel
-        </span>
-        <div className="ml-1 flex items-center justify-center rounded-lg bg-gradient-to-br from-[var(--brand-primary)] to-[var(--brand-secondary)] px-2 py-0.5 shadow-lg shadow-purple-500/20">
-          <span className="text-[0.8em] font-black leading-none text-white tracking-widest uppercase">
-            HOME
-          </span>
-        </div>
+      <div className="flex items-center">
+        <img 
+          src="/logo.png" 
+          alt="VivanelHOME" 
+          className={clsx(
+            "object-contain w-auto h-auto min-w-[120px]",
+            compact ? "max-h-5" : "max-h-8 md:max-h-10"
+          )}
+        />
       </div>
       
       {/* Luz sutil de fundo ao passar o mouse */}
