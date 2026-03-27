@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { UserPlus, Users, Trash2, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
+import { UserPlus, Users, Trash2, CheckCircle2, AlertCircle, Loader2, Key } from "lucide-react";
 import type { Collaborator } from "@/lib/collaborator-service";
 
 export function CollaboratorManager() {
@@ -71,6 +71,27 @@ export function CollaboratorManager() {
       fetchCollaborators();
     } catch (error) {
       alert("Nao foi possivel excluir.");
+    }
+  }
+
+  async function handleResetPassword(id: string, name: string) {
+    const newPassword = prompt(`Digite a nova senha para ${name}:`, "");
+    if (!newPassword || newPassword.length < 6) {
+      if (newPassword) alert("A senha deve ter pelo menos 6 caracteres.");
+      return;
+    }
+
+    try {
+      const response = await fetch("/api/admin/collaborators", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id, password: newPassword }),
+      });
+
+      if (!response.ok) throw new Error("Erro ao atualizar senha.");
+      alert(`Senha de ${name} atualizada com sucesso!`);
+    } catch (error) {
+      alert("Erro ao redefinir senha.");
     }
   }
 
@@ -170,13 +191,22 @@ export function CollaboratorManager() {
                   <p className="font-bold text-[var(--brand-text)]">{collab.name}</p>
                   <p className="text-xs text-[var(--brand-muted)]">{collab.email}</p>
                 </div>
-                <button
-                  onClick={() => handleDelete(collab.id)}
-                  className="p-2 text-red-400 hover:bg-red-400/10 hover:text-red-300 rounded-xl transition-colors border border-transparent hover:border-red-400/20"
-                  title="Remover acesso"
-                >
-                  <Trash2 size={16} />
-                </button>
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => handleResetPassword(collab.id, collab.name)}
+                    className="p-2 text-amber-400 hover:bg-amber-400/10 hover:text-amber-300 rounded-xl transition-colors border border-transparent hover:border-amber-400/20"
+                    title="Redefinir senha"
+                  >
+                    <Key size={16} />
+                  </button>
+                  <button
+                    onClick={() => handleDelete(collab.id)}
+                    className="p-2 text-red-400 hover:bg-red-400/10 hover:text-red-300 rounded-xl transition-colors border border-transparent hover:border-red-400/20"
+                    title="Remover acesso"
+                  >
+                    <Trash2 size={16} />
+                  </button>
+                </div>
               </li>
             ))}
           </ul>

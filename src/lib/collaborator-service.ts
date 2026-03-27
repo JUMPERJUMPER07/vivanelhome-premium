@@ -89,6 +89,21 @@ export async function deleteCollaborator(id: string): Promise<void> {
   }
 }
 
+export async function updateCollaboratorPassword(id: string, password: string): Promise<void> {
+  if (!isSupabaseConfigured()) throw new Error("Supabase nao configurado.");
+
+  const hash = createPasswordHash(password);
+  const supabase = getSupabaseAdminClient();
+  const { error } = await supabase
+    .from("collaborators")
+    .update({ password_hash: hash })
+    .eq("id", id);
+
+  if (error) {
+    throw new Error(`Erro ao atualizar senha: ${error.message}`);
+  }
+}
+
 export async function findCollaboratorByEmail(email: string): Promise<CollaboratorRow | null> {
   if (!isSupabaseConfigured()) return null;
 
