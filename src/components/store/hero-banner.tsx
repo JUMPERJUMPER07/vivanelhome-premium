@@ -78,10 +78,10 @@ export function HeroBanner() {
                     <div className="overflow-hidden rounded-[3.5rem] border border-white/10 bg-white/5 p-4 backdrop-blur-xl transition-all duration-700 group-hover/item:border-white/20 group-hover/item:shadow-[0_40px_100px_rgba(139,92,246,0.2)] shadow-2xl">
                        <ProductVisual 
                          product={featured[currentIndex]} 
-                         forceRatio="16/9" 
+                         forceRatio="4/3" 
                          objectFit="contain"
-                         imagePadding="2rem"
-                         className="rounded-[3rem] shadow-2xl transition-all duration-700 bg-black/10" 
+                         imagePadding="0.5rem"
+                         className="rounded-[3.5rem] shadow-2xl transition-all duration-700 bg-white/5" 
                        />
                        
                        {/* Overlay Info - Clean & Floating */}
