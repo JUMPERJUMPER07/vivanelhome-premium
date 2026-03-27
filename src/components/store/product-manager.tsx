@@ -429,8 +429,8 @@ export function ProductManager() {
   }
 
   return (
-    <div className="mx-auto w-full max-w-[1600px] px-4">
-      <div className="grid gap-8 lg:grid-cols-[1fr_400px]">
+    <div className="mx-auto w-full max-w-[1800px] px-0">
+      <div className="grid gap-10">
       <form
         id="product-form-top"
         onSubmit={handleSubmit}
@@ -472,8 +472,8 @@ export function ProductManager() {
             </div>
           )}
 
-          <div className="mt-8 grid gap-5 md:grid-cols-2">
-            <label className="grid gap-2 md:col-span-2">
+          <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            <label className="grid gap-2 md:col-span-2 xl:col-span-3">
               <span className="text-xs font-bold uppercase tracking-widest text-[var(--brand-text)]/60 ml-1">Nome Comercial</span>
               <input
                 required
@@ -484,7 +484,7 @@ export function ProductManager() {
               />
             </label>
 
-            <label className="grid gap-2 md:col-span-2">
+            <label className="grid gap-2 md:col-span-2 xl:col-span-3">
               <span className="text-xs font-bold uppercase tracking-widest text-[var(--brand-text)]/60 ml-1">Headline (Curta)</span>
               <input
                 required
@@ -495,7 +495,7 @@ export function ProductManager() {
               />
             </label>
 
-            <label className="grid gap-2 md:col-span-2">
+            <label className="grid gap-2 md:col-span-2 xl:col-span-3">
               <span className="text-xs font-bold uppercase tracking-widest text-[var(--brand-text)]/60 ml-1">Descrição Detalhada</span>
               <textarea
                 required
@@ -509,7 +509,7 @@ export function ProductManager() {
             </label>
 
             <label className="grid gap-2">
-              <span className="text-xs font-bold uppercase tracking-widest text-[var(--brand-text)]/60 ml-1">Preço Original / Sem Desconto (Opcional)</span>
+              <span className="text-xs font-bold uppercase tracking-widest text-[var(--brand-text)]/60 ml-1">Preço Original (Opcional)</span>
               <input
                 type="text"
                 inputMode="decimal"
@@ -521,7 +521,7 @@ export function ProductManager() {
             </label>
 
             <label className="grid gap-2">
-              <span className="text-xs font-bold uppercase tracking-widest text-[var(--brand-text)]/60 ml-1">Preço Atual / Real (R$)</span>
+              <span className="text-xs font-bold uppercase tracking-widest text-[var(--brand-text)]/60 ml-1">Preço Atual (R$)</span>
               <input
                 required
                 type="text"
@@ -532,9 +532,7 @@ export function ProductManager() {
                 placeholder="Ex: 39,90"
               />
             </label>
-          </div>
 
-          <div className="mt-5 grid gap-5 md:grid-cols-2">
             <label className="grid gap-2">
               <span className="text-xs font-bold uppercase tracking-widest text-[var(--brand-text)]/60 ml-1">Avaliação (0 a 5.0)</span>
               <input
@@ -559,7 +557,7 @@ export function ProductManager() {
             </label>
 
             <label className="grid gap-2">
-              <span className="text-xs font-bold uppercase tracking-widest text-[var(--brand-text)]/60 ml-1">Vendas (Ex: 4mil+ Vendidos)</span>
+              <span className="text-xs font-bold uppercase tracking-widest text-[var(--brand-text)]/60 ml-1">Vendas</span>
               <input
                 value={form.soldLabel}
                 onChange={(event) => updateField("soldLabel", event.target.value)}
@@ -567,9 +565,7 @@ export function ProductManager() {
                 placeholder="Ex: 4mil+ Vendidos"
               />
             </label>
-          </div>
 
-          <div className="mt-5 grid gap-5 md:grid-cols-2">
             <label className="grid gap-2">
               <span className="text-xs font-bold uppercase tracking-widest text-[var(--brand-text)]/60 ml-1">Categoria</span>
               <select
@@ -586,7 +582,7 @@ export function ProductManager() {
             </label>
 
             <label className="grid gap-2">
-              <span className="text-xs font-bold uppercase tracking-widest text-[var(--brand-text)]/60 ml-1">Estilo do Card / Ícone</span>
+              <span className="text-xs font-bold uppercase tracking-widest text-[var(--brand-text)]/60 ml-1">Estilo do Card</span>
               <select
                 value={form.iconKey}
                 onChange={(event) => updateField("iconKey", event.target.value)}
@@ -611,16 +607,16 @@ export function ProductManager() {
             </label>
 
             <label className="grid gap-2">
-              <span className="text-xs font-bold uppercase tracking-widest text-[var(--brand-text)]/60 ml-1">Porcentagem OFF (Opcional)</span>
+              <span className="text-xs font-bold uppercase tracking-widest text-[var(--brand-text)]/60 ml-1">Porcentagem OFF</span>
               <input
                 value={form.discountLabel}
                 onChange={(event) => updateField("discountLabel", event.target.value)}
                 className="h-12 rounded-2xl border border-white/5 bg-white/5 px-4 text-sm text-[var(--brand-text)] outline-none transition focus:border-[var(--brand-primary)]/50 focus:bg-white/[0.08]"
-                placeholder="Ex: -30% (Pode deixar em branco)"
+                placeholder="Ex: -30%"
               />
             </label>
 
-            <label className="grid gap-2 md:col-span-2">
+            <label className="grid gap-2 md:col-span-2 xl:col-span-3">
               <div className="flex items-center justify-between ml-1">
                 <span className="text-xs font-bold uppercase tracking-widest text-[var(--brand-text)]/60">Link de Afiliado (Ex: Shopee)</span>
                 <button
@@ -649,7 +645,7 @@ export function ProductManager() {
               />
             </label>
 
-            <div className="grid gap-2 md:col-span-2">
+            <div className="grid gap-2 md:col-span-2 xl:col-span-3">
               <span className="text-xs font-bold uppercase tracking-widest text-[var(--brand-text)]/60 ml-1">Mídia do Produto</span>
               <div className="flex gap-4 items-start">
                 <label className="flex flex-1 cursor-pointer flex-col items-center justify-center gap-3 rounded-2xl border border-dashed border-white/10 bg-white/5 py-8 transition hover:bg-white/[0.08] hover:border-[var(--brand-primary)]/40 group/upload text-center">
@@ -786,7 +782,7 @@ export function ProductManager() {
           </div>
         </div>
 
-        <div className="space-y-4 max-h-[700px] overflow-y-auto pr-2 custom-scrollbar">
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 pr-2">
           {allProducts.length === 0 ? (
             <div className="rounded-[2.5rem] border border-dashed border-white/10 p-12 text-center">
               <p className="text-sm font-medium text-[var(--brand-muted)] italic">Nenhum produto cadastrado até o momento.</p>

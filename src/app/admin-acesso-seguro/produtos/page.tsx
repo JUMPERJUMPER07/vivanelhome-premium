@@ -38,7 +38,7 @@ export default function ProductPanelPage() {
         </div>
       </div>
 
-      <div className="mt-8 grid gap-6 xl:grid-cols-[1.3fr_0.7fr]">
+      <div className="mt-8 grid gap-8 xl:grid-cols-[1fr_450px]">
         <ProductManager />
         <div className="grid gap-6 auto-rows-min">
           <StoreSettingsManager />
