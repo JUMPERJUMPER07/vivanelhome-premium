@@ -29,7 +29,7 @@ export function CustomProductsShelf({ products, isLoading = false }: CustomProdu
   }
 
   return (
-    <section className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+    <section className="mx-auto max-w-[2000px] px-4 py-8 sm:px-6 lg:px-12">
       <div className="mb-5">
         <p className="text-xs font-bold uppercase tracking-[0.24em] text-[var(--brand-orange)]">
           Destaques da loja
@@ -39,7 +39,7 @@ export function CustomProductsShelf({ products, isLoading = false }: CustomProdu
         </h2>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6">
         {products.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}

@@ -110,7 +110,7 @@ export function CatalogBrowser({
         </div>
 
         {filteredProducts.length > 0 ? (
-          <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
+          <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 3xl:grid-cols-7 4xl:grid-cols-8">
             {filteredProducts.map((product, index) => (
               <div key={product.id} className="animate-fade-up" style={{ animationDelay: `${index * 50}ms` }}>
                 <ProductCard product={product} />

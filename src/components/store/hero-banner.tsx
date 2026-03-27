@@ -33,7 +33,7 @@ export function HeroBanner() {
   const current = featured[currentIndex];
 
   return (
-    <section className="relative mx-auto max-w-[1800px] px-4 pt-8 pb-4 sm:px-6 lg:px-12">
+    <section className="relative mx-auto max-w-[2000px] px-4 pt-8 pb-4 sm:px-6 lg:px-12">
       <div className="group relative overflow-hidden rounded-[3rem] border border-white/8 bg-[#080f1f] text-white shadow-2xl transition-all duration-700">
         {/* Unified Background Effect — Restored Glow */}
         <div

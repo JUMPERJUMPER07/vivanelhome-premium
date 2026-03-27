@@ -23,7 +23,7 @@ export function Header({ searchValue = "", onSearchChange }: HeaderProps) {
       <div className="bg-gradient-to-r from-[var(--brand-primary)]/25 via-[var(--brand-secondary)]/12 to-transparent overflow-hidden relative">
         {/* Linha de brilho animada */}
         <div className="absolute inset-y-0 w-32 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-[shimmer_3s_infinite]" style={{ backgroundSize: "200% 100%" }} />
-        <div className="mx-auto flex max-w-[1800px] flex-wrap items-center justify-between gap-2 px-4 py-2 text-[10px] font-black tracking-wider uppercase sm:px-6 lg:px-12">
+        <div className="mx-auto flex max-w-[2000px] flex-wrap items-center justify-between gap-2 px-4 py-2 text-[10px] font-black tracking-wider uppercase sm:px-6 lg:px-12">
           <div className="inline-flex items-center gap-2 text-[var(--brand-text)]/90">
             <BadgePercent size={12} className="text-[var(--brand-primary)]" />
             Ofertas atualizadas diariamente
@@ -38,7 +38,7 @@ export function Header({ searchValue = "", onSearchChange }: HeaderProps) {
       {/* Linha de brilho na base do header */}
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--brand-primary)]/30 to-transparent" />
 
-      <div className="mx-auto flex max-w-[1800px] flex-col gap-4 px-4 py-4 sm:px-6 lg:px-12">
+      <div className="mx-auto flex max-w-[2000px] flex-col gap-4 px-4 py-4 sm:px-6 lg:px-12">
         {/* Linha principal: logo + search + suporte */}
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-3">

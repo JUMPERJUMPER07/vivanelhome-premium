@@ -72,7 +72,7 @@ const extraFeatures = [
 
 export function FeaturedStoreLayout() {
   return (
-    <section className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+    <section className="mx-auto max-w-[2000px] px-4 py-12 sm:px-6 lg:px-12">
       {/* Cabeçalho */}
       <div className="mb-8 flex items-end justify-between gap-4">
         <div>

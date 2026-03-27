@@ -15,7 +15,7 @@ export function Footer() {
       <div className="absolute inset-0 bg-gradient-to-b from-[var(--brand-bg)] via-[#080f1f] to-black pointer-events-none" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[200px] bg-[var(--brand-primary)]/5 blur-[80px] pointer-events-none" />
 
-      <div className="relative mx-auto grid max-w-[1800px] gap-12 px-4 py-16 sm:px-6 md:grid-cols-[1.8fr_0.6fr_0.6fr] lg:px-12">
+      <div className="relative mx-auto grid max-w-[2000px] gap-12 px-4 py-16 sm:px-6 md:grid-cols-[1.8fr_0.6fr_0.6fr] lg:px-12">
         {/* Coluna 1 — Marca */}
         <div className="space-y-6">
           <Logo />
@@ -77,7 +77,7 @@ export function Footer() {
 
       {/* Rodapé final */}
       <div className="relative border-t border-[var(--brand-border)] bg-black/30 py-6">
-        <div className="mx-auto flex max-w-[1800px] flex-col gap-3 px-4 text-[10px] font-bold uppercase tracking-widest text-[var(--brand-muted)] sm:px-6 md:flex-row md:items-center md:justify-between lg:px-12">
+        <div className="mx-auto flex max-w-[2000px] flex-col gap-3 px-4 text-[10px] font-bold uppercase tracking-widest text-[var(--brand-muted)] sm:px-6 md:flex-row md:items-center md:justify-between lg:px-12">
           <p className="flex items-center gap-1.5">
             © 2026 VivanelHOME · Feito com{" "}
             <Heart size={11} className="text-rose-500 fill-rose-500" />

@@ -47,7 +47,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
     <main>
       <Header />
 
-      <section className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+      <section className="mx-auto max-w-[2000px] px-4 py-8 sm:px-6 lg:px-12">
         <Breadcrumbs
           items={[
             { label: "Inicio", href: "/" },
@@ -56,7 +56,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
           ]}
         />
 
-        <div className="mt-8 grid gap-10 lg:grid-cols-[1fr_1fr]">
+        <div className="mt-8 grid gap-10 lg:grid-cols-[1fr_1.2fr] xl:gap-16">
           <div className="relative group">
             <div className="absolute -inset-4 bg-gradient-to-br from-[var(--brand-primary)]/20 to-[var(--brand-secondary)]/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             <ProductVisual product={product} large />
@@ -146,7 +146,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
           </div>
         </div>
 
-        <section className="mt-10">
+        <section className="mt-20">
           <div className="mb-5">
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--brand-orange)]">
               Mais opcoes
@@ -155,7 +155,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
               Continue explorando a vitrine
             </h2>
           </div>
-          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6">
             {relatedProducts.map((item) => (
               <ProductCard key={item.id} product={item} />
             ))}
