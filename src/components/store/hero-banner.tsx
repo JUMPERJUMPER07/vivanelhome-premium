@@ -41,9 +41,9 @@ export function HeroBanner() {
           }}
         />
 
-        <div className="relative z-10 grid items-center gap-16 lg:grid-cols-[38%_62%] p-10 md:p-20">
+        <div className="relative z-10 grid items-center gap-12 lg:grid-cols-2 p-8 md:p-16">
           {/* Left Side: Content */}
-          <div className="flex flex-col items-start gap-8">
+          <div className="flex flex-col items-start gap-6">
             <div className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-6 py-2.5 text-[10px] font-black tracking-[0.3em] uppercase backdrop-blur-xl">
               <Sparkles size={14} className="text-[#a78bfa]" />
               <span className="bg-gradient-to-r from-white to-white/60 bg-clip-text text-transparent">
@@ -75,13 +75,13 @@ export function HeroBanner() {
              {featured.length > 0 ? (
                <div className="relative w-full perspective-2000">
                   <Link href={`/produto/${featured[currentIndex].slug}`} className="block relative z-20 group/item">
-                    <div className="overflow-hidden rounded-[3.5rem] border border-white/10 bg-white/5 p-4 backdrop-blur-xl transition-all duration-700 group-hover/item:border-white/20 group-hover/item:shadow-[0_40px_100px_rgba(139,92,246,0.2)] shadow-2xl">
+                    <div className="overflow-hidden rounded-[3.5rem] border border-white/10 bg-white/5 p-2 backdrop-blur-xl transition-all duration-700 group-hover/item:border-white/20 group-hover/item:shadow-[0_40px_100px_rgba(139,92,246,0.3)] shadow-2xl">
                        <ProductVisual 
                          product={featured[currentIndex]} 
-                         forceRatio="4/3" 
-                         objectFit="contain"
-                         imagePadding="0.5rem"
-                         className="rounded-[3.5rem] shadow-2xl transition-all duration-700 bg-white/5" 
+                         forceRatio="1/1" 
+                         objectFit="cover"
+                         imagePadding="0"
+                         className="rounded-[3rem] shadow-2xl transition-all duration-700" 
                        />
                        
                        {/* Overlay Info - Clean & Floating */}
