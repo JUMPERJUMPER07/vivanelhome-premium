@@ -102,33 +102,62 @@ export class ShopeeService {
   }
 
   /**
+   * Resolve links curtos (shope.ee) para links canônicos que a API aceita
+   */
+  private static async resolveUrl(url: string): Promise<string> {
+    if (!url.includes("shope.ee")) return url;
+    
+    try {
+      const response = await fetch(url, { method: "HEAD", redirect: "follow" });
+      return response.url;
+    } catch {
+      return url;
+    }
+  }
+
+  /**
    * Busca detalhes de um produto pela URL usando a API de Afiliados
    */
   static async getOfferDetails(url: string) {
+    const resolvedUrl = await this.resolveUrl(url);
+    
     const query = `
       query getOfferList($url: String!) {
-        productOfferList(url: $url) {
+        productOfferV2(url: $url) {
           nodes {
             productName
-            productImageUrl
+            imageUrl
             price
             priceBeforeDiscount
             discount
             shopName
             shopId
             itemId
-            commissionRate
           }
         }
       }
     `;
 
     try {
-      const result = await this.graphqlRequest(query, { url });
-      return result.data?.productOfferList?.nodes?.[0] || null;
+      const result = await this.graphqlRequest(query, { url: resolvedUrl });
+      const nodes = result.data?.productOfferV2?.nodes;
+      
+      if (!nodes || nodes.length === 0) {
+        console.warn(`Nenhum nó encontrado para a URL: ${resolvedUrl}`);
+        return null;
+      }
+      
+      const node = nodes[0];
+      return {
+        productName: node.productName,
+        productImageUrl: node.imageUrl,
+        price: node.price,
+        priceBeforeDiscount: node.priceBeforeDiscount,
+        itemId: node.itemId,
+      };
     } catch (error) {
       console.error("Erro ao buscar oferta via GraphQL:", error);
-      return null;
+      throw error;
     }
   }
 }
