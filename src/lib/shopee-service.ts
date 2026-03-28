@@ -60,7 +60,7 @@ export class ShopeeService {
     
     if (!response.ok) {
       const errorData = await response.json();
-      throw new Error(errorData.message || `Erro na API da Shopee: ${response.statusText}`);
+      throw new Error(`[REST API ${path}] ${errorData.message || response.statusText}`);
     }
 
     return response.json();
@@ -83,8 +83,8 @@ export class ShopeeService {
     const signatureBase = `${partnerId}${timestamp}${body}${secret}`;
     const signature = createHash("sha256").update(signatureBase).digest("hex");
     
-    // Cabeçalho sem espaços extras conforme exemplos oficiais
-    const authHeader = `SHA256 Credential=${partnerId},Timestamp=${timestamp},Signature=${signature}`;
+    // Cabeçalho simplificado (alguns SDKs BR usam sem o prefixo SHA256)
+    const authHeader = `Credential=${partnerId},Timestamp=${timestamp},Signature=${signature}`;
     
     const url = "https://open-api.affiliate.shopee.com.br/graphql";
     
