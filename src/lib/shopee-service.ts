@@ -124,6 +124,36 @@ export class ShopeeService {
   static async getOfferDetails(url: string) {
     const resolvedUrl = await this.resolveUrl(url);
     
+    // TENTATIVA 1: API REST V2 (Pode exigir ShopID, mas tentamos como Public)
+    try {
+      // Extraímos o item_id se possível da URL
+      const itemMatch = resolvedUrl.match(/i\.(\d+)\.(\d+)/);
+      if (itemMatch) {
+        const itemId = itemMatch[2];
+        const path = "/api/v2/ams/get_item_list";
+        
+        const response = await this.request({
+          path,
+          method: "GET", // AMS v2 costuma ser GET para lista
+        });
+        
+        if (response && response.data && response.data.list) {
+          const item = response.data.list.find((i: any) => String(i.item_id) === itemId);
+          if (item) {
+            return {
+              productName: item.item_name,
+              productImageUrl: item.image_url,
+              price: item.price,
+              itemId: item.item_id,
+            };
+          }
+        }
+      }
+    } catch (err) {
+      console.warn("REST v2 falhou, tentando GraphQL...", err);
+    }
+
+    // TENTATIVA 2: API GraphQL (Mais comum para afiliados puros)
     const query = `
       query getOfferList($url: String!) {
         productOfferV2(url: $url) {
@@ -132,9 +162,6 @@ export class ShopeeService {
             imageUrl
             price
             priceBeforeDiscount
-            discount
-            shopName
-            shopId
             itemId
           }
         }
@@ -145,10 +172,7 @@ export class ShopeeService {
       const result = await this.graphqlRequest(query, { url: resolvedUrl });
       const nodes = result.data?.productOfferV2?.nodes;
       
-      if (!nodes || nodes.length === 0) {
-        console.warn(`Nenhum nó encontrado para a URL: ${resolvedUrl}`);
-        return null;
-      }
+      if (!nodes || nodes.length === 0) return null;
       
       const node = nodes[0];
       return {
@@ -159,7 +183,7 @@ export class ShopeeService {
         itemId: node.itemId,
       };
     } catch (error) {
-      console.error("Erro ao buscar oferta via GraphQL:", error);
+      console.error("GraphQL também falhou:", error);
       throw error;
     }
   }
