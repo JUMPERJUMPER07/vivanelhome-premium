@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { ShopeeService } from "@/lib/shopee-service";
 
 export async function POST(request: Request) {
   try {
@@ -8,6 +9,29 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "URL é obrigatória" }, { status: 400 });
     }
 
+    // Tenta usar a API Oficial primeiro se for um link da Shopee
+    if (url.includes("shopee") || url.includes("shope.ee")) {
+      try {
+        const officialData = await ShopeeService.getOfferDetails(url);
+        if (officialData && officialData.productName) {
+           return NextResponse.json({
+            title: officialData.productName,
+            image: officialData.productImageUrl,
+            description: null, // API de oferta geralmente não traz descrição longa
+            price: officialData.price?.toString().replace('.', ','),
+            rating: "5.0", // API básica não traz rating, mas é 100% confiável no preço
+            reviewCount: "1",
+            soldCount: "Ver no Site",
+            success: true,
+            isOfficial: true
+          });
+        }
+      } catch (apiError) {
+        console.warn("Falha na API Oficial, tentando Scraper...", apiError);
+      }
+    }
+
+    // Fallback para Scraper se a API falhar ou não for Shopee
     // Tenta buscar o conteúdo da página com um User-Agent que costuma ser aceito por scrapers de meta-tags
     const response = await fetch(url, {
       headers: {

@@ -87,6 +87,26 @@ export function ProductManager() {
   const [removeCurrentImage, setRemoveCurrentImage] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isScraping, setIsScraping] = useState(false);
+  const [isRefreshing, setIsRefreshing] = useState(false);
+
+  async function handleOfficialRefresh() {
+    setIsRefreshing(true);
+    setSuccessMessage("");
+    setErrorMessage("");
+    try {
+      const response = await fetch("/api/admin/products/refresh", { method: "POST" });
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.error || "Erro ao atualizar");
+      
+      setSuccessMessage(`Sincronização concluída! ${data.updated} produtos atualizados com a Shopee.`);
+      // Opcional: Recarregar a página ou atualizar o estado local se necessário
+    } catch (err) {
+      setErrorMessage("Falha ao sincronizar com a API oficial.");
+    } finally {
+      setIsRefreshing(false);
+    }
+  }
+
   const [importProgress, setImportProgress] = useState({ total: 0, current: 0, active: false, logs: [] as string[] });
 
   async function handleBatchImport(event: ChangeEvent<HTMLInputElement>) {
@@ -782,12 +802,26 @@ export function ProductManager() {
 
           <div className="mt-8 pt-8 border-t border-white/5">
             <div className="flex items-center justify-between">
-              <p className="text-xs font-bold uppercase tracking-widest text-[var(--brand-muted)]">Produtos na Vitrine</p>
-              <span className="text-2xl font-black text-[var(--brand-primary)]">{customProducts.length}</span>
+              <div>
+                <p className="text-[10px] font-black uppercase tracking-widest text-[var(--brand-primary)]">Sync Official</p>
+                <p className="text-xs font-bold uppercase tracking-widest text-[var(--brand-muted)]">Produtos na Vitrine</p>
+              </div>
+              <span className="text-3xl font-black text-[var(--brand-primary)]">{customProducts.length}</span>
             </div>
+
+            <button
+              type="button"
+              disabled={isRefreshing}
+              onClick={handleOfficialRefresh}
+              className="mt-6 flex w-full items-center justify-center gap-2 rounded-2xl bg-[var(--brand-primary)]/10 p-4 text-xs font-black uppercase tracking-widest text-[var(--brand-primary)] transition hover:bg-[var(--brand-primary)]/20 disabled:opacity-50 border border-[var(--brand-primary)]/20"
+            >
+              <Wand2 size={16} className={isRefreshing ? "animate-spin" : ""} />
+              {isRefreshing ? "Sincronizando..." : "Sincronizar Tudo com Shopee"}
+            </button>
+
             <Link
               href="/"
-              className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-2xl border border-white/5 bg-white/5 p-4 text-xs font-bold uppercase tracking-widest text-[var(--brand-text)] transition hover:bg-white/10"
+              className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-2xl border border-white/5 bg-white/5 p-4 text-xs font-bold uppercase tracking-widest text-[var(--brand-text)] transition hover:bg-white/10"
             >
               <ExternalLink size={14} />
               Minha Vitrine Ao Vivo
