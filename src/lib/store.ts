@@ -49,3 +49,15 @@ export const currency = new Intl.NumberFormat("pt-BR", {
   style: "currency",
   currency: "BRL",
 });
+
+export const compactNumber = {
+  format: (n: number) => {
+    return new Intl.NumberFormat("pt-BR", {
+      notation: "compact",
+      maximumFractionDigits: 1,
+    }).format(n).replace(/\s/g, "").toLowerCase();
+  }
+};
+
+
+

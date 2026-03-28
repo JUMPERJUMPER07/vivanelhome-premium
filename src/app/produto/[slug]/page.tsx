@@ -9,7 +9,7 @@ import { ProductCard } from "@/components/store/product-card";
 import { ProductVisual } from "@/components/store/product-visual";
 import { findProductBySlug, products } from "@/data/products";
 import { findCustomProductBySlug, readCustomProducts } from "@/lib/custom-products";
-import { currency, storeConfig } from "@/lib/store";
+import { currency, storeConfig, compactNumber } from "@/lib/store";
 
 type ProductPageProps = {
   params: Promise<{ slug: string }>;
@@ -82,7 +82,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 <Star size={18} className="fill-yellow-400 text-yellow-400" />
                 <span className="font-bold text-[var(--brand-text)]">{product.rating.toFixed(1)}</span>
               </div>
-              <span className="text-sm text-[var(--brand-muted)] font-medium">({product.reviewCount} avaliações de clientes)</span>
+              <span className="text-sm text-[var(--brand-muted)] font-medium">{compactNumber.format(product.reviewCount)} Avaliações</span>
               {product.soldLabel && (
                 <div className="flex items-center gap-2">
                   <span className="h-1 w-1 rounded-full bg-[var(--brand-muted)]/30" />

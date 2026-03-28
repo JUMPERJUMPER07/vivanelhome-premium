@@ -279,9 +279,16 @@ export function ProductManager() {
     setErrorMessage("");
 
     const selectedCategory = categoryOptions.find((item) => item.value === form.categorySlug);
-    const sanitize = (val: string) => {
-      if (!val) return 0;
-      let clean = String(val).trim();
+    const sanitize = (val: string | number) => {
+      if (val === undefined || val === null || val === "") return 0;
+      let clean = String(val).trim().toLowerCase();
+      
+      // Handle the "mil" shortcut if typed in the admin panel
+      if (clean.endsWith("mil")) {
+        const numPart = clean.replace("mil", "").replace(",", ".");
+        return (Number(numPart) || 0) * 1000;
+      }
+
       const lastDot = clean.lastIndexOf(".");
       const lastComma = clean.lastIndexOf(",");
       
@@ -297,6 +304,8 @@ export function ProductManager() {
     };
     const promoPrice = sanitize(form.price);
     const oldPrice = sanitize(form.oldPrice);
+    const finalRating = sanitize(form.rating);
+    const finalReviewCount = Math.round(sanitize(form.reviewCount));
 
     const url = form.affiliateUrl.toLowerCase();
     const isAcceptedLink = 
@@ -350,8 +359,8 @@ export function ProductManager() {
       accentFrom: "#FF6000",
       accentTo: "#E63946",
       imageUrl: form.imageUrl || undefined,
-      rating: Number(form.rating),
-      reviewCount: Number(form.reviewCount),
+      rating: finalRating,
+      reviewCount: finalReviewCount,
       soldLabel: form.soldLabel,
       benefits: [],
       isNew: true,
@@ -400,8 +409,8 @@ export function ProductManager() {
       discountLabel: product.discountLabel,
       iconKey: product.iconKey,
       imageUrl: product.imageUrl ?? "",
-      rating: String(product.rating),
-      reviewCount: String(product.reviewCount),
+      rating: String(product.rating).replace(".", ","),
+      reviewCount: String(product.reviewCount).replace(".", ","),
       soldLabel: product.soldLabel || "",
     });
     setImageFile(null);
@@ -548,11 +557,12 @@ export function ProductManager() {
             <label className="grid gap-2">
               <span className="text-xs font-bold uppercase tracking-widest text-[var(--brand-text)]/60 ml-1">Qtd de Avaliações</span>
               <input
-                type="number"
-                min="0"
+                type="text"
+                inputMode="decimal"
                 value={form.reviewCount}
                 onChange={(event) => updateField("reviewCount", event.target.value)}
                 className="h-12 rounded-2xl border border-white/5 bg-white/5 px-4 text-sm text-[var(--brand-text)] outline-none transition focus:border-[var(--brand-primary)]/50 focus:bg-white/[0.08]"
+                placeholder="Ex: 1500"
               />
             </label>
 

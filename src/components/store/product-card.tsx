@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Star } from "lucide-react";
 import type { Product } from "@/data/products";
-import { currency } from "@/lib/store";
+import { currency, compactNumber } from "@/lib/store";
 import { ProductVisual } from "./product-visual";
 
 type ProductCardProps = {
@@ -56,7 +56,7 @@ export function ProductCard({ product }: ProductCardProps) {
             <span className="text-xs font-black text-amber-400">{product.rating.toFixed(1)}</span>
           </div>
           <span className="text-[11px] text-[var(--brand-muted)]">
-            ({product.reviewCount} avaliações)
+            {compactNumber.format(product.reviewCount)} Avaliações
           </span>
           {product.soldLabel && (
             <>
