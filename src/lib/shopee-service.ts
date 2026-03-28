@@ -1,4 +1,4 @@
-import { createHmac } from "crypto";
+import { createHmac, createHash } from "crypto";
 
 const PARTNER_ID = process.env.SHOPEE_PARTNER_ID;
 const SECRET_KEY = process.env.SHOPEE_SECRET_KEY;
@@ -113,9 +113,17 @@ export class ShopeeService {
     if (!url.includes("shope.ee")) return url;
     
     try {
-      const response = await fetch(url, { method: "HEAD", redirect: "follow" });
+      // Usar um User-Agent para evitar bloqueio no redirecionamento
+      const response = await fetch(url, { 
+        method: "GET", // A Shopee às vezes exige GET para seguir o redirect total
+        redirect: "follow",
+        headers: {
+          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+        }
+      });
       return response.url;
-    } catch {
+    } catch (error) {
+      console.warn("Erro ao resolver URL curta, usando original:", error);
       return url;
     }
   }
