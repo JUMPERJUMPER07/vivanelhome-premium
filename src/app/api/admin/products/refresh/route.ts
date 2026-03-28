@@ -20,25 +20,36 @@ export async function POST() {
       try {
         const officialData = await ShopeeService.getOfferDetails(product.affiliateUrl);
         
-        if (officialData && officialData.productName) {
-          const updates: any = {
-            name: officialData.productName,
-            price: officialData.price || product.price,
-            oldPrice: officialData.priceBeforeDiscount || product.oldPrice,
-            // Mantemos a imagem original do usuário se existir, senão usamos a da API
-            imageUrl: product.imageUrl || officialData.productImageUrl,
-          };
+        if (officialData && (officialData.productName || officialData.price)) {
+          const updates: any = {};
+          
+          // Só atualiza se houver mudança real para evitar escritas desnecessárias
+          if (officialData.productName && officialData.productName !== product.name) {
+            updates.name = officialData.productName;
+          }
+          
+          if (officialData.price && officialData.price !== product.price) {
+            updates.price = officialData.price;
+            // Se houver preço antigo na API, atualiza também
+            if (officialData.priceBeforeDiscount) {
+              updates.oldPrice = officialData.priceBeforeDiscount;
+            }
+          }
 
-          await updateCustomProduct(product.id, updates);
-          results.updated++;
-          results.logs.push(`✅ ${product.name.substring(0, 30)}... atualizado.`);
+          if (Object.keys(updates).length > 0) {
+            await updateCustomProduct(product.id, updates);
+            results.updated++;
+            results.logs.push(`✅ [Sincronizado] ${product.name.substring(0, 20)}...`);
+          } else {
+            results.logs.push(`ℹ️ [Sem alteração] ${product.name.substring(0, 20)}...`);
+          }
         } else {
           results.failed++;
-          results.logs.push(`⚠️ ${product.name.substring(0, 30)}... sem dados na API.`);
+          results.logs.push(`⚠️ [Não encontrado na API] ${product.name.substring(0, 20)}...`);
         }
-      } catch (err) {
+      } catch (err: any) {
         results.failed++;
-        results.logs.push(`❌ Erro em ${product.name.substring(0, 30)}...`);
+        results.logs.push(`❌ [ERRO] ${product.name.substring(0, 15)}... : ${err.message || 'Falha na API'}`);
       }
     }
 

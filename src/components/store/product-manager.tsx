@@ -89,8 +89,11 @@ export function ProductManager() {
   const [isScraping, setIsScraping] = useState(false);
   const [isRefreshing, setIsRefreshing] = useState(false);
 
+  const [syncLogs, setSyncLogs] = useState<string[]>([]);
+
   async function handleOfficialRefresh() {
     setIsRefreshing(true);
+    setSyncLogs([]);
     setSuccessMessage("");
     setErrorMessage("");
     try {
@@ -98,10 +101,10 @@ export function ProductManager() {
       const data = await response.json();
       if (!response.ok) throw new Error(data.error || "Erro ao atualizar");
       
-      setSuccessMessage(`Sincronização concluída! ${data.updated} produtos atualizados com a Shopee.`);
-      // Opcional: Recarregar a página ou atualizar o estado local se necessário
+      setSyncLogs(data.logs || []);
+      setSuccessMessage(`Sincronização concluída! ${data.updated} produtos atualizados, ${data.failed} falhas.`);
     } catch (err) {
-      setErrorMessage("Falha ao sincronizar com a API oficial.");
+      setErrorMessage("Falha ao sincronizar com a API oficial da Shopee.");
     } finally {
       setIsRefreshing(false);
     }
@@ -818,6 +821,14 @@ export function ProductManager() {
               <Wand2 size={16} className={isRefreshing ? "animate-spin" : ""} />
               {isRefreshing ? "Sincronizando..." : "Sincronizar Tudo com Shopee"}
             </button>
+
+            {syncLogs.length > 0 && (
+              <div className="mt-4 max-h-32 overflow-y-auto rounded-xl bg-black/20 p-3 text-[9px] font-mono text-[var(--brand-muted)] space-y-1 custom-scrollbar border border-white/5">
+                {syncLogs.map((log, i) => (
+                  <div key={i}>{log}</div>
+                ))}
+              </div>
+            )}
 
             <Link
               href="/"
