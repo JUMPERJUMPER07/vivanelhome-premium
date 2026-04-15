@@ -29,6 +29,7 @@ export const storeConfig = {
     { name: "✨ Itens que facilitam sua rotina", slug: "itens-rotina" },
     { name: "🔥 Mais vendidos", slug: "mais-vendidos" },
     { name: "💡 Achados úteis", slug: "achados-uteis" },
+    { name: "👗 Moda Feminina", slug: "moda-feminina" },
   ],
 };
 

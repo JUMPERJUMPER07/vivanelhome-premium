@@ -5,6 +5,7 @@ import {
   CookingPot,
   Flame,
   Lightbulb,
+  Shirt,
   Sparkles,
 } from "lucide-react";
 import { storeConfig } from "@/lib/store";
@@ -16,6 +17,7 @@ const categoryIcons = [
   Sparkles,
   Flame,
   Lightbulb,
+  Shirt,
 ];
 
 const categoryColors = [
@@ -25,6 +27,7 @@ const categoryColors = [
   { bg: "from-purple-500/20 to-pink-500/5", icon: "text-purple-400", hover: "hover:border-purple-500/40" },
   { bg: "from-rose-500/20 to-red-500/5", icon: "text-rose-400", hover: "hover:border-rose-500/40" },
   { bg: "from-yellow-500/20 to-amber-500/5", icon: "text-yellow-400", hover: "hover:border-yellow-500/40" },
+  { bg: "from-pink-500/20 to-fuchsia-500/5", icon: "text-pink-400", hover: "hover:border-pink-500/40" },
 ];
 
 export function CategoryStrip() {
