@@ -44,24 +44,26 @@ const initialForm = {
 };
 
 const categoryOptions = [
-  { label: "🏠 Organização e praticidade", value: "organizacao-praticidade" },
-  { label: "🛁 Banheiro e conforto", value: "banheiro-conforto" },
-  { label: "🍽 Cozinha e dia a dia", value: "cozinha-dia-a-dia" },
-  { label: "✨ Itens que facilitam sua rotina", value: "itens-rotina" },
-  { label: "🔥 Mais vendidos", value: "mais-vendidos" },
-  { label: "💡 Achados úteis", value: "achados-uteis" },
+  { label: "🏠 Organização e praticidade — Seu espaço, do seu jeito", value: "organizacao-praticidade" },
+  { label: "🛁 Banheiro e conforto — Ritual de cuidado", value: "banheiro-conforto" },
+  { label: "🍽 Cozinha e dia a dia — Sabor com estilo", value: "cozinha-dia-a-dia" },
+  { label: "✨ Itens que facilitam sua rotina — Praticidade", value: "itens-rotina" },
+  { label: "🔥 Mais vendidos — Favoritas de todas", value: "mais-vendidos" },
+  { label: "💡 Achados úteis — Descobertas encantadoras", value: "achados-uteis" },
+  { label: "👗 Moda Feminina — Estilo que te representa", value: "moda-feminina" },
 ];
 
 const iconOptions = [
-  { label: "🏠 Organização (Boxes)", value: "package" },
-  { label: "🛁 Banheiro (Bath)", value: "droplets" },
-  { label: "🍽 Cozinha (Chef Hat)", value: "chef-hat" },
-  { label: "✨ Rotina (Sparkles)", value: "sparkles" },
-  { label: "🔥 Tendência (Flame)", value: "heart" },
-  { label: "💡 Achados (Lightbulb/Zap)", value: "lightbulb" },
-  { label: "🛍 Shopee Logo", value: "shopee" },
-  { label: "📦 Amazon Logo", value: "amazon" },
-  { label: "🏷 ML Logo", value: "mercado-livre" },
+  { label: "🏠 Organização (Seu espaço)", value: "package" },
+  { label: "🛁 Banheiro (Ritual diário)", value: "droplets" },
+  { label: "🍽 Cozinha (Praticidade)", value: "chef-hat" },
+  { label: "✨ Rotina (Leveza)", value: "sparkles" },
+  { label: "🔥 Tendência (Favoritas)", value: "heart" },
+  { label: "💡 Achados (Encantadoras)", value: "lightbulb" },
+  { label: "👗 Moda (Sempre linda)", value: "flower-2" },
+  { label: "🛍 Shopee", value: "shopee" },
+  { label: "📦 Amazon", value: "amazon" },
+  { label: "🏷 ML", value: "mercado-livre" },
 ];
 
 

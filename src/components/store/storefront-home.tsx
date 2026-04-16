@@ -21,6 +21,7 @@ function StorefrontContent() {
     <main className="min-h-screen bg-[#07070a]">
       <Header searchValue={search} onSearchChange={setSearch} />
       <HeroBanner />
+      <CategoryStrip />
       
       {/* Authority Section */}
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
