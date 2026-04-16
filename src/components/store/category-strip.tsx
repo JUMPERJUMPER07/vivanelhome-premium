@@ -145,7 +145,7 @@ export function CategoryStrip() {
               {/* Glow hover top */}
               <div
                 className={`pointer-events-none absolute -top-6 left-1/2 h-20 w-20 -translate-x-1/2 rounded-full opacity-0 blur-2xl transition-opacity duration-300 group-hover:opacity-60`}
-                style={{ background: `radial-gradient(circle, ${theme.dot.replace("bg-", "")}, transparent)` }}
+                style={{ background: `radial-gradient(circle, ${theme.dot.replace("bg-[", "").replace("]", "").replace("bg-", "")}, transparent)` }}
               />
 
               {/* Ícone circular elegante */}
@@ -186,7 +186,7 @@ export function CategoryStrip() {
                   rounded-full transition-all duration-300 group-hover:w-3/4
                 `}
                 style={{
-                  background: `linear-gradient(to right, transparent, ${theme.dot.replace("bg-[", "").replace("]", "")}, transparent)`,
+                  background: `linear-gradient(to right, transparent, ${theme.dot.replace("bg-[", "").replace("]", "").replace("bg-", "")}, transparent)`,
                 }}
               />
             </Link>
