@@ -1,5 +1,5 @@
 create table if not exists public.custom_products (
-  id bigint primary key,
+  id bigserial primary key,
   created_at timestamptz not null default now(),
   slug text not null unique,
   name text not null,
@@ -15,6 +15,7 @@ create table if not exists public.custom_products (
   badge text not null,
   rating numeric not null default 5,
   review_count integer not null default 1,
+  sold_label text not null default '',
   image_url text,
   icon_key text not null,
   accent_from text not null,
@@ -51,6 +52,7 @@ for all
 to service_role
 using (bucket_id = 'product-images')
 with check (bucket_id = 'product-images');
+
 create table if not exists public.store_settings (
   id text primary key,
   updated_at timestamptz not null default now(),
@@ -74,20 +76,19 @@ to service_role
 using (true)
 with check (true);
 
-CREATE TABLE IF NOT EXISTS public.collaborators (
-  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
-  created_at timestamptz NOT NULL DEFAULT now(),
-  name text NOT NULL,
-  email text NOT NULL UNIQUE,
-  password_hash text NOT NULL,
-  is_active boolean NOT NULL DEFAULT true
+create table if not exists public.collaborators (
+  id uuid primary key default gen_random_uuid(),
+  created_at timestamptz not null default now(),
+  name text not null,
+  email text not null unique,
+  password_hash text not null,
+  is_active boolean not null default true
 );
 
-ALTER TABLE public.collaborators ENABLE ROW LEVEL SECURITY;
+alter table public.collaborators enable row level security;
 
-CREATE POLICY "Manage collaborators" 
-ON public.collaborators 
-FOR ALL 
-TO service_role 
-USING (true);
-
+create policy "Manage collaborators"
+on public.collaborators
+for all
+to service_role
+using (true);

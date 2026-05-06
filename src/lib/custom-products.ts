@@ -90,7 +90,7 @@ function mapProductToRow(product: Omit<Product, "id"> | Product) {
     badge: product.badge,
     rating: product.rating,
     review_count: product.reviewCount,
-    sold_label: product.soldLabel ?? null,
+    sold_label: product.soldLabel ?? "",
     image_url: product.imageUrl ?? null,
     icon_key: product.iconKey,
     accent_from: product.accentFrom,
@@ -184,7 +184,7 @@ export async function removeImageFile(imageUrl?: string) {
 
     await supabase.storage.from(bucket).remove([storagePath]);
   } catch {
-    // Ignore malformed URLs or missing files.
+    // Ignora URLs malformadas ou arquivos inexistentes.
   }
 }
 
@@ -194,12 +194,14 @@ export async function createCustomProduct(product: Omit<Product, "id" | "slug">)
   }
 
   const supabase = getSupabaseAdminClient();
-  const id = Date.now();
-  const slug = `${slugify(product.name || "produto")}-${id.toString().slice(-6)}`;
 
-  const newProduct: Product = {
+  // Usa UUID para garantir unicidade do slug mesmo em imports em lote simultâneos.
+  // O ID numérico é gerado pelo bigserial do Supabase — sem risco de colisão.
+  const suffix = crypto.randomUUID().replace(/-/g, "").slice(0, 8);
+  const slug = `${slugify(product.name || "produto")}-${suffix}`;
+
+  const newProduct: Omit<Product, "id"> = {
     ...product,
-    id,
     slug,
     isCustom: true,
   };
